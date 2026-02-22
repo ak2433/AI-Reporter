@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+from economic_analyzer import INDICATORS
 
 
 def get_countries():
@@ -12,12 +13,10 @@ def get_countries():
     }
 
 def get_indicators():
-    return {
-        "SP.POP.TOTL": "Population, total",
-        "NY.GDP.MKTP.CD": "GDP (current US$)",
-        "SP.DYN.LE00.IN": "Life expectancy at birth",
-        "EN.ATM.CO2E.PC": "CO2 emissions (metric tons per capita)",
-    }
+    merged = {}
+    for category in INDICATORS.values():
+        merged.update(category)
+    return merged
 
 def fetch_indicator(country, indicator, start_year, end_year):
     url = (

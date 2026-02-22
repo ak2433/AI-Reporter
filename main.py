@@ -21,7 +21,7 @@ app_ui = ui.page_fluid(
     ui.layout_sidebar(
         ui.sidebar(
             ui.input_select("country", "Country", choices=countries, selected="US"),
-            ui.input_select("indicator", "Indicator", choices=indicators, selected="SP.POP.TOTL"),
+            ui.input_select("indicator", "Indicator", choices=indicators, selected="NY.GDP.MKTP.KD.ZG"),
             ui.input_slider("years", "Year range", min=1960, max=2023, value=(2000, 2020), sep=""),
             ui.input_action_button("load", "Load data"),
             ui.input_action_button("analyze_ai", "Analyze Economic Strength"),
