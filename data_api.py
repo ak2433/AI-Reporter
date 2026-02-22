@@ -11,7 +11,6 @@ def get_countries():
         if c["region"]["value"] != "Aggregates"
     }
 
-
 def get_indicators():
     return {
         "SP.POP.TOTL": "Population, total",
@@ -19,7 +18,6 @@ def get_indicators():
         "SP.DYN.LE00.IN": "Life expectancy at birth",
         "EN.ATM.CO2E.PC": "CO2 emissions (metric tons per capita)",
     }
-
 
 def fetch_indicator(country, indicator, start_year, end_year):
     url = (

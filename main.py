@@ -1,22 +1,15 @@
 from shiny import App, ui, render, reactive
 import pandas as pd
 import matplotlib.pyplot as plt
-
 from data_api import get_countries, get_indicators, fetch_indicator
-
 from economic_analyzer import (
     fetch_all_indicators,
     build_data_summary,
     ask_ollama,
 )
 
-# Load data
-
 countries = get_countries()
 indicators = get_indicators()
-
-
-# UI
 
 app_ui = ui.page_fluid(
     ui.tags.head(
@@ -43,7 +36,7 @@ app_ui = ui.page_fluid(
             ui.card_header("Trend"),
             ui.output_plot("trend_plot"),
         ),
-        
+
         ui.card(
           ui.card_header("AI Economic Strength Analysis"),
           ui.output_text_verbatim("ai_analysis"),
@@ -52,8 +45,6 @@ app_ui = ui.page_fluid(
     )
 )
 
-
-# Server
 
 def server(input, output, session):
 

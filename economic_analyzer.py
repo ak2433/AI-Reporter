@@ -1,24 +1,12 @@
-"""
-Country Economic Strength Analyzer
-===================================
-Fetches economic data from the World Bank API and sends it to a local
-Ollama model for a structured analysis across three dimensions:
-
-  Step 1 – Short-Term Strength (Cyclical)
-  Step 2 – Structural Strength (Long-Term)
-  Step 3 – Risk Factors
-"""
-
 import requests
 import pandas as pd
 import ollama
 from tabulate import tabulate
 
-# Configuration
 OLLAMA_MODEL = "gemma3:4b"  # change to whichever model you have pulled
 
 START_YEAR = 2010
-END_YEAR = 2024
+END_YEAR = 2025
 
 # World Bank indicator codes mapped to analysis categories
 INDICATORS = {
@@ -48,8 +36,6 @@ INDICATORS = {
 }
 
 
-
-# World Bank helpers
 def get_countries():
     """Fetch list of countries from World Bank API."""
     url = "https://api.worldbank.org/v2/country?format=json&per_page=300"
@@ -60,7 +46,6 @@ def get_countries():
         if c["region"]["value"] != "Aggregates"
     }
     return countries
-
 
 def fetch_indicator(country_code, indicator, start_year=START_YEAR, end_year=END_YEAR):
     """Fetch a single indicator time-series for one country."""
@@ -89,7 +74,6 @@ def fetch_indicator(country_code, indicator, start_year=START_YEAR, end_year=END
     df = df.sort_values("year")
     return df
 
-
 def fetch_all_indicators(country_code):
     """Fetch every indicator for a country and organise by category."""
     results = {}
@@ -117,8 +101,6 @@ def fetch_all_indicators(country_code):
             }
     return results
 
-
-# Build a readable summary for the LLM
 def build_data_summary(country_name, raw):
     """Turn raw indicator data into a structured text block."""
     sections = []
@@ -146,9 +128,6 @@ def build_data_summary(country_name, raw):
 
     header = f"ECONOMIC DATA FOR: {country_name.upper()} ({START_YEAR}–{END_YEAR})"
     return f"\n{header}\n" + "\n".join(sections)
-
-
-# Ollama interaction
 
 SYSTEM_PROMPT = """You are a senior macroeconomist. You will receive economic data
 for a country from the World Bank. Provide a SHORT, punchy analysis using EXACTLY
