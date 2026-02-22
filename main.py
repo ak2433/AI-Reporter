@@ -16,7 +16,7 @@ app_ui = ui.page_fluid(
         ui.tags.link(rel="stylesheet", href="styles.css")
     ),
 
-    ui.h2("🌍 World Bank Indicators Explorer"),
+    ui.h2("World Bank Indicators Explorer", style="text-align:center;"),
 
     ui.layout_sidebar(
         ui.sidebar(
