@@ -1,0 +1,5 @@
+{"location": "main.py:startup", "message": "H-A: head tag type check", "data": {"type": "<class 'htmltools._core.Tag'>", "has_get_value": false, "is_Tag": "Tag"}, "timestamp": 1771781656.8928566, "hypothesisId": "H-A"}
+{"location": "main.py:startup", "message": "H-B: title span type check", "data": {"type": "<class 'htmltools._core.Tag'>", "has_get_value": false}, "timestamp": 1771781656.8928566, "hypothesisId": "H-B"}
+{"location": "main.py:startup", "message": "H-B: nav_panel type check", "data": {"type": "<class 'shiny.ui._navs.NavPanel'>", "has_get_value": true}, "timestamp": 1771781656.8928566, "hypothesisId": "H-B"}
+{"location": "main.py:startup", "message": "About to construct App", "data": {"app_ui_type": "<class 'htmltools._core.Tag'>"}, "timestamp": 1771781656.8928566, "hypothesisId": "H-C"}
+{"location": "main.py:startup", "message": "App construction FAILED", "data": {"error_type": "AttributeError", "error_msg": "'Tag' object has no attribute 'get_value'"}, "timestamp": 1771781656.9039478, "hypothesisId": "H-C"}
